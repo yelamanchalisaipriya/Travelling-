@@ -1,0 +1,6 @@
+{
+  "name": "Travelling Agent - AI Travel Planning & Itinerary Orchestrator",
+  "description": "Autonomous AI travel planning website powered by n8n workflow automation. Custom itineraries, budget calculation, and automated trip orchestration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
