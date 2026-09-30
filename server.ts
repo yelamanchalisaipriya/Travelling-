@@ -63,14 +63,7 @@ async function startServer() {
         });
       }
 
-      // Map to exact n8n field IDs:
-      // field-0: Name
-      // field-1: From
-      // field-2: Destination
-      // field-3: Start date
-      // field-4: End date
-      // field-5: Budget
-      // field-6: Email
+      // Append both field-* format and friendly names to accommodate any n8n node configuration
       const formData = new FormData();
       formData.append('field-0', String(name).trim());
       formData.append('field-1', String(from).trim());
@@ -79,6 +72,22 @@ async function startServer() {
       formData.append('field-4', String(endDate).trim());
       formData.append('field-5', String(budget).trim());
       formData.append('field-6', String(email).trim());
+
+      // Friendly aliases:
+      formData.append('name', String(name).trim());
+      formData.append('Name', String(name).trim());
+      formData.append('from', String(from).trim());
+      formData.append('From', String(from).trim());
+      formData.append('destination', String(destination).trim());
+      formData.append('Destination', String(destination).trim());
+      formData.append('startDate', String(startDate).trim());
+      formData.append('Start date', String(startDate).trim());
+      formData.append('endDate', String(endDate).trim());
+      formData.append('End date', String(endDate).trim());
+      formData.append('budget', String(budget).trim());
+      formData.append('Budget', String(budget).trim());
+      formData.append('email', String(email).trim());
+      formData.append('Email', String(email).trim());
 
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 15000);

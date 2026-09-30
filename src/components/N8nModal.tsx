@@ -118,28 +118,61 @@ export const N8nModal: React.FC<N8nModalProps> = ({ isOpen, onClose, n8nUrl }) =
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-mono">
             <div className="bg-white/5 p-2 rounded-lg border border-white/5">
-              <div className="text-amber-400">field-0</div>
+              <div className="text-amber-400">field-0 / name</div>
               <div className="text-slate-400 text-[11px]">Traveler Name</div>
             </div>
             <div className="bg-white/5 p-2 rounded-lg border border-white/5">
-              <div className="text-amber-400">field-1</div>
-              <div className="text-slate-400 text-[11px]">From (Departure)</div>
+              <div className="text-amber-400">field-1 / from</div>
+              <div className="text-slate-400 text-[11px]">Departure City</div>
             </div>
             <div className="bg-white/5 p-2 rounded-lg border border-white/5">
-              <div className="text-amber-400">field-2</div>
+              <div className="text-amber-400">field-2 / destination</div>
               <div className="text-slate-400 text-[11px]">Destination</div>
             </div>
             <div className="bg-white/5 p-2 rounded-lg border border-white/5">
-              <div className="text-amber-400">field-3</div>
+              <div className="text-amber-400">field-3 / startDate</div>
               <div className="text-slate-400 text-[11px]">Start date</div>
             </div>
             <div className="bg-white/5 p-2 rounded-lg border border-white/5">
-              <div className="text-amber-400">field-4</div>
+              <div className="text-amber-400">field-4 / endDate</div>
               <div className="text-slate-400 text-[11px]">End date</div>
             </div>
             <div className="bg-white/5 p-2 rounded-lg border border-white/5">
-              <div className="text-amber-400">field-5 & 6</div>
-              <div className="text-slate-400 text-[11px]">Budget & Email</div>
+              <div className="text-amber-400">field-6 / email</div>
+              <div className="text-slate-400 text-[11px]">Delivery Email</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Email Delivery Troubleshooting Guide */}
+        <div className="mb-6 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4">
+          <div className="flex items-center gap-2 text-xs font-semibold text-amber-300 mb-2">
+            <span>Why might emails not arrive from n8n? (4 Quick Checks)</span>
+          </div>
+          <div className="space-y-2 text-xs text-slate-300">
+            <div className="flex items-start gap-2">
+              <span className="font-mono text-amber-400 font-bold">1.</span>
+              <div>
+                <strong className="text-white">Is the workflow Active in n8n?</strong> In your n8n dashboard (<a href="https://yelamanchalisaipriya.app.n8n.cloud" target="_blank" rel="noreferrer" className="underline text-amber-400">yelamanchalisaipriya.app.n8n.cloud</a>), ensure the switch in the top right is set to <strong>"Active" (Green)</strong>. Inactive workflows accept submissions but do not run in production.
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="font-mono text-amber-400 font-bold">2.</span>
+              <div>
+                <strong className="text-white">Check n8n "Executions" tab:</strong> Click <strong>Executions</strong> in n8n's left sidebar. If a run shows red ❌, click it to see the exact node error (e.g. Gmail authentication expired, invalid recipient, or LLM agent quota).
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="font-mono text-amber-400 font-bold">3.</span>
+              <div>
+                <strong className="text-white">Email Node Recipient Field:</strong> In your Gmail / Send Email node in n8n, make sure the <em>To</em> expression is mapped to <code className="bg-black/40 px-1 py-0.5 rounded text-amber-300">{'{{ $json["field-6"] }}'}</code> or <code className="bg-black/40 px-1 py-0.5 rounded text-amber-300">{'{{ $json.email }}'}</code>.
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="font-mono text-amber-400 font-bold">4.</span>
+              <div>
+                <strong className="text-white">Check Spam / Junk Folder:</strong> Automated emails from fresh automation apps frequently get routed into the Gmail <strong>Spam</strong> or <strong>Promotions</strong> tab.
+              </div>
             </div>
           </div>
         </div>

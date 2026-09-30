@@ -76,6 +76,9 @@ Status: Sent to Travelling Agent n8n Automation Engine.`;
                 <p className="text-xs text-slate-300 mt-0.5">
                   Trip parameters have been posted to n8n Cloud (form <span className="font-mono text-emerald-300">55518f9f</span>). Full dossier & live travel updates are routed to <span className="text-white font-medium">{tripData.email}</span>.
                 </p>
+                <p className="text-[11px] text-amber-300/80 mt-1 flex items-center gap-1.5">
+                  <span>💡 Note: If email does not arrive within 2 minutes, check your <strong>Spam / Promotions</strong> folder, or check the 4-step checklist in the modal.</span>
+                </p>
               </div>
             </div>
 
